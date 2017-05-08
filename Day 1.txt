@@ -1,0 +1,85 @@
+1. JSF - > Java Server Faces
+
+
+2. JSF is MVC architecture
+Model				View						Controller
+
+
+Business Logic		Presentation layer						
+
+Database Logic		text box/radion, submit 
+
+
+Controller
+
+
+	inbox/compose/send    -> Controller   -> inboxJvaclass   -> inbox.jsp
+											ComposeJavaclass   -> compose.jsp
+											SendjavaClass -> nextpage.jsp
+											
+											
+
+3. Controller in JSF -> FacesServlet
+
+
+4. HTML Controls
+
+<input type="text" name="username"/>
+
+JSF has its own HTML GUI controls 
+
+<h:inputText name="username"/>
+
+5. 			Environment
+
+Eclipse Helios IDE -> to write java and JSF applications logic
+JDK 1.7+  ( Helios will not support 1.8)
+Apachae tomcat 7.x (it will not support 1.8)
+
+
+
+6. created a web applcaton and deployed in tomcat
+
+7. configuring the webapplicaton as JSF
+
+		a. configure all necessary jar files to your jsf application
+		b. configure FacesServlet in web.xml, so that all requests which are ending with .jsf will be traken care by the FacesServlet
+		
+		//.jsf, .faces
+		
+		//struts .do, 
+		
+		/spring  .html or .htm
+		c. its own configuraton file, so that controller will load this configuraton file to decide which 
+		java class it needs to called and which jsp page it needs to be redirected.
+		
+		struts-config.xml
+		faces-config.xml
+		dispatcher-servlet.xml
+		
+8. Testing the JSF application
+		a. create a class called HelloWorld
+		b. register this class with JSF using xml based approach or annotation based approach. 
+
+
+
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
