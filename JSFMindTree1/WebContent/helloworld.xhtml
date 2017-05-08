@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+      
+   <head>
+      <title>JSF Training!</title>
+   </head>
+<!-- JSF Expression Language.... -->
+
+   <body>
+
+	<h:form>
+	    Using JSF Tags:   #{helloWorld.getMessage()} <br/>
+	    
+	    Username: <h:inputText name="userName"/> <br/>
+	    Password: <h:inputSecret name="password"/> <br/>
+	    
+	    <!-- static navigation -->
+	    <h:commandButton value="Login" action="success"/>
+     </h:form>
+   </body>
+   
+   
+</html>
