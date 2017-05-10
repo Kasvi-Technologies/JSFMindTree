@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head><title>Accessing Simple Bean Properties</title>
+<link href="./css/styles.css" 
+      rel="stylesheet" type="text/css"/> 
+</h:head>
+<h:body>
+<table border="5" align="center">
+  <tr><th class="title">Accessing Simple Bean Properties</th></tr>
+</table>
+<p/>
+
+<!-- while displaying the page, JSF contaner will call the getter methods -->
+<!-- while submtting the page, it will call the setter methods and assgn those values back to your bean variables. -->
+<ul>
+  <li>Creation time: <h:outputLabel value="#{testBean1.creationTime}"/></li>
+  <li>Greeting: #{testBean1.greeting}</li>
+  <li>Random number: #{testBean1.randomNumber}</li>
+</ul>
+</h:body></html>
