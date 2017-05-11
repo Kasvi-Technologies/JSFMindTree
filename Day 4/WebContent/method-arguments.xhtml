@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head><title>Supplying Arguments to EL Methods</title>
+<link href="./css/styles.css" 
+      rel="stylesheet" type="text/css"/> 
+</h:head>
+<h:body>
+<table border="5" align="center">
+  <tr><th class="title">Supplying Arguments to EL Methods</th></tr>
+</table>
+<p/>
+<ul>
+	<li>Default greeting: #{testBean2.greeting(true)}</li>
+	<li>Default greeting: #{testBean2.greeting(false)}</li>
+  <li>Default greeting: #{testBean2.greeting()}</li>
+  <li>Small random number: #{testBean2.randomNumber(5)}</li>
+  <li>Big random number: #{testBean2.randomNumber(500)}</li>
+  <li>Random greeting: 
+      #{testBean2.greeting(testBean2.randomNumber(200) gt 100)}
+  </li>
+</ul>
+</h:body></html>

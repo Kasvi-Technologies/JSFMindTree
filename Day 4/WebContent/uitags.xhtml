@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+<h:head>
+	<title>Using UI Tags</title>
+	<link href="./css/styles.css" rel="stylesheet" type="text/css"/> 
+	
+	<script>
+		function sethiddenfieldVal(){
+			document.getElementById("hidden").value =
+				document.getElementById("username").value + " " +
+				document.getElementById("password").value 
+		}
+	
+	</script>
+</h:head>
+
+<h:body>
+<h:form id="uitagsform" prependId="false">
+	<table border="5" align="center">
+	  <tr><th class="title">Using JSF UI Tags</th></tr>
+	</table>
+	<p/>
+	
+	<h:panelGrid columns="2">
+			<h:outputText value="User Name"/>
+			<h:inputText value="#{uiTagsExample.username}" id="username"/>
+			
+			<h:outputText value="Password"/>
+			<h:inputSecret value="#{uiTagsExample.password}" id="password"/>
+			
+			<h:outputText value="Hidden Field"/>
+			<h:inputHidden value="#{uiTagsExample.hidden}" id="hidden"/>
+			
+			<h:outputText value="Hobbies"/>
+			<h:selectManyCheckbox value="#{uiTagsExample.hobbies}">
+				<f:selectItem itemLabel="Sports" itemValue="Sports"/>
+				<f:selectItem itemLabel="Cooking" itemValue="Cooking"/>
+				<f:selectItem itemLabel="Reading" itemValue="Read"/>
+				<f:selectItem itemLabel="Dancing" itemValue="Dance"/>
+			</h:selectManyCheckbox>
+						
+			<h:outputText value="Default Hobbies"/>
+			<h:selectManyCheckbox >
+				<f:selectItems value="#{uiTagsExample.defaultHobbies}"/>
+			</h:selectManyCheckbox>
+			
+			<h:outputText value="Gender"/>
+			<h:selectOneRadio value="#{uiTagsExample.gender}">
+				<f:selectItems value="#{uiTagsExample.defaultGenders}"/>
+			</h:selectOneRadio>
+			
+			<h:outputText value="One ListBox"/>	
+			<h:selectOneListbox >
+				<f:selectItems value="#{uiTagsExample.defaultHobbies}"/>
+			</h:selectOneListbox>	
+			
+			<h:outputText value="Many ListBox"/>	
+			<h:selectManyListbox >
+				<f:selectItems value="#{uiTagsExample.defaultHobbies}"/>
+			</h:selectManyListbox>	
+			
+			
+			<h:outputText value="One Menu"/>	
+			<h:selectOneMenu value="#{uiTagsExample.country}">
+				<f:selectItems value="#{uiTagsExample.countries}"/>
+			</h:selectOneMenu>	
+					
+			
+			<h:selectBooleanCheckbox value="#{uiTagsExample.read}" id="isRead"/> I have read terms and conditions
+			<h:commandButton value="Submit" onclick="sethiddenfieldVal()" 
+							action="uitagsexamplesuccess"/>
+			
+			
+	</h:panelGrid>
+	
+	</h:form>
+</h:body>
+
+</html>
