@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head><title>Implicit Objects</title>
+<link href="./css/styles.css" 
+      rel="stylesheet" type="text/css"/> 
+</h:head>
+<h:body>
+<table border="5" align="center">
+  <tr><th class="title">Implicit Objects</th></tr>
+</table>
+<p/>
+<ul>
+  <li><b>Value of JSESSIONID cookie:</b> 
+  
+      #{cookie.JSESSIONID.value}</li>
+  
+  <li><b>The "test" request parameter:</b> 
+      #{param.test}</li>
+  
+  <li><b>User-Agent request header:</b> 
+      <!-- Using [] syntax because of dash in name! -->
+      #{header["User-Agent"]}</li>
+      
+  <li><b>Accept request header:</b> 
+      <!-- Using [] syntax because of dash in name! -->
+      #{header["accept"]}</li>
+      
+  <li><b>Host request header:</b> 
+      <!-- Using [] syntax because of dash in name! -->
+      #{header["host"]}</li>  
+      
+</ul>
+</h:body></html>

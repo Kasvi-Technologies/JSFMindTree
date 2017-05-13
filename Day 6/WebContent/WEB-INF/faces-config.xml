@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+      http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+   version="2.0">
+ 
+  <!--  Empty for now. Your entries will go here. But even
+        if you have no entries in faces-config.xml, you are required
+        to have a valid faces-config.xml file with legal 
+        start and end tags.
+        
+   -->
+   
+   <application>
+   
+   		<resource-bundle>
+   			<base-name>messages1</base-name>
+   			<var>msgs1</var>
+   		</resource-bundle>
+   		
+   		 <resource-bundle>
+		      <base-name>messages2</base-name>
+		      <var>msgs2</var>
+	    </resource-bundle>
+   		
+   </application>
+   
+   <managed-bean>
+   		<managed-bean-name>helloWorld</managed-bean-name>
+   		<managed-bean-class>com.mindtree.beans.HelloWorld</managed-bean-class>
+   		<managed-bean-scope>request</managed-bean-scope>
+   		
+   		<!-- Dependency Injection -->
+   		<managed-property>
+   			<property-name>messageObj</property-name>
+   			<value>#{message}</value>   		
+   		</managed-property>
+   		
+   		<managed-property>
+   			<property-name>type</property-name>
+   			<value>#{param.method}</value>
+   		</managed-property>
+   		
+   </managed-bean>
+      
+   <managed-bean>
+   		<managed-bean-name>message</managed-bean-name>
+   		<managed-bean-class>com.mindtree.beans.Message</managed-bean-class>
+   		<managed-bean-scope>request</managed-bean-scope>
+   </managed-bean>
+  
+	<!-- Explicit navigations -->
+	
+	
+
+	<navigation-rule>
+		<from-view-id>helloworld.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>successpage</from-outcome>
+			<to-view-id>success.jsf</to-view-id>		
+		</navigation-case>
+		
+		<navigation-case>
+			<from-action>#{helloworld.page1}</from-action>
+			<from-outcome>successpage</from-outcome>
+			<to-view-id>success.jsf</to-view-id>		
+		</navigation-case>
+		
+		<navigation-case>
+			<from-action>#{helloworld.page2}</from-action>
+			<from-outcome>successpage</from-outcome>
+			<to-view-id>page2.jsf</to-view-id>	
+			<redirect/>	
+		</navigation-case>
+		<!-- <navigation-case>			
+			<from-outcome>error</from-outcome>
+			<to-view-id>error.jsf</to-view-id>	
+		</navigation-case>
+	 -->
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>employee.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>successpage</from-outcome>
+			<to-view-id>success.jsf</to-view-id>		
+		</navigation-case>
+		
+		<navigation-case>
+			<from-action>#{employee.add}</from-action>
+			<from-outcome>successpage</from-outcome>
+			<to-view-id>success.jsf</to-view-id>		
+		</navigation-case>
+		
+		<navigation-case>
+			<from-action>#{employee.delete}</from-action>
+			<from-outcome>successpage</from-outcome>
+			<to-view-id>page2.jsf</to-view-id>	
+			<redirect/>	
+		</navigation-case>
+		
+	<!-- 	<navigation-case>			
+			<from-outcome>error</from-outcome>
+			<to-view-id>error.jsf</to-view-id>	
+		</navigation-case>
+	 -->
+	</navigation-rule>
+
+	<!-- wild card navigations -->
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>	
+		<navigation-case>
+			<from-outcome>error</from-outcome>
+			<to-view-id>error.jsf</to-view-id>		
+		</navigation-case>
+	
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>sample.xhtml</from-view-id>	
+		<navigation-case>
+			<to-view-id>home.jsf</to-view-id>		
+		</navigation-case>
+	
+	</navigation-rule>
+	
+
+
+        
+</faces-config>

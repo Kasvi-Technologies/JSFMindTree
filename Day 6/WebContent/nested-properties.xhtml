@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head><title>Accessing Nested Bean Properties</title>
+<link href="./css/styles.css" 
+      rel="stylesheet" type="text/css"/> 
+</h:head>
+<h:body>
+<table border="5" align="center">
+  <tr><th class="title">Accessing Nested Bean Properties</th></tr>
+</table>
+<p/>
+<!-- employee1.getName().getFirstName() -->
+<ul>
+  <li>Employee's first name: 
+      <h:outputLabel value="#{employee1.name.firstName}"/></li>
+  <li>Employee's last name: 
+      #{employee1.name.lastName}</li>
+  <li>Name of employee's company: 
+      #{employee1.company.companyName}</li>
+  <li>Business area of employee's company: 
+      #{employee1.company.business}</li>
+</ul>
+</h:body></html>

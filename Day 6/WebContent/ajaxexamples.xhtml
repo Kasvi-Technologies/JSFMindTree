@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<h:head>
+	
+	</h:head>
+
+	<h:body>
+		<h:form id="ajacForm" prependId="false">
+		
+			
+			
+			<h:commandButton value="Get Date" action="#{ajaxBean.latestDate}">
+				<f:ajax render="dateStrComp" />
+			</h:commandButton>
+		
+			<h:outputText id="dateStrComp"  value="#{ajaxBean.dateStr}"/>
+		
+			<br/><br/>
+			
+			<ui:remove>
+				<h:inputText id="userName" value="#{ajaxBean.userName}"/>
+			</ui:remove>	
+			
+			Country:
+			<h:selectOneMenu id="country" value="#{ajaxBean.country}">
+				<f:selectItems value="#{ajaxBean.countries}"/>
+				<f:ajax render="stateComp" execute="country"/>
+			</h:selectOneMenu>
+		
+		
+			<br/><br/>
+			State:
+			<h:selectOneMenu id="stateComp" value="#{ajaxBean.state}">
+				<f:selectItems value="#{ajaxBean.states}"/>	
+				<f:ajax render="cityComp" execute="stateComp"/>			
+			</h:selectOneMenu>
+		
+			<br/><br/>
+			State:
+			<h:selectOneMenu id="cityComp" value="#{ajaxBean.city}">
+				<f:selectItems value="#{ajaxBean.cities}"/>				
+			</h:selectOneMenu>
+			
+		</h:form>
+	
+	</h:body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:head>
+	<title>Using UI Tags</title>
+	<link href="./css/table-style.css" rel="stylesheet" type="text/css"/> 
+	
+	<script>
+		function sethiddenfieldVal(){
+			document.getElementById("hidden").value =
+				document.getElementById("username").value + " " +
+				document.getElementById("password").value 
+		}
+	
+	</script>
+</h:head>
+
+<h:body>
+<h:form id="uitagsform" prependId="false">
+	<table border="5" align="center">
+	  <tr><th class="title">Using JSF UI Tags</th></tr>
+	</table>
+	<p/>
+	
+	<h:panelGrid columns="2">
+			<h:outputText value="User Name"/>
+			
+			<h:panelGroup id="usernamegroup">			
+				<h:inputText value="#{uiTagsExample.username}" id="username" required="true"/>
+				<h:message for="username"/>
+			</h:panelGroup>
+			
+			
+			<h:outputText value="Password"/>
+			<h:inputSecret value="#{uiTagsExample.password}" id="password"/>
+			
+			<h:outputText value="Hidden Field"/>
+			<h:inputHidden value="#{uiTagsExample.hidden}" id="hidden"/>
+			
+			<h:outputText value="Hobbies"/>
+			<h:selectManyCheckbox value="#{uiTagsExample.hobbies}">
+				<f:selectItem itemLabel="Sports" itemValue="Sports"/>
+				<f:selectItem itemLabel="Cooking" itemValue="Cooking"/>
+				<f:selectItem itemLabel="Reading" itemValue="Read"/>
+				<f:selectItem itemLabel="Dancing" itemValue="Dance"/>
+			</h:selectManyCheckbox>
+						
+			<h:outputText value="Default Hobbies"/>
+			<h:selectManyCheckbox >
+				<f:selectItems value="#{uiTagsExample.defaultHobbies}"/>
+			</h:selectManyCheckbox>
+			
+			<h:outputText value="Gender"/>
+			<h:selectOneRadio value="#{uiTagsExample.gender}">
+				<f:selectItems value="#{uiTagsExample.defaultGenders}"/>
+			</h:selectOneRadio>
+			
+			<h:outputText value="States"/>	
+			<h:selectOneListbox value="#{uiTagsExample.state}">
+				<f:selectItems value="#{uiTagsExample.statesList}"/>
+			</h:selectOneListbox>	
+			
+			<h:outputText value="Many ListBox"/>	
+			<h:selectManyListbox >
+				<f:selectItems value="#{uiTagsExample.defaultHobbies}"/>
+			</h:selectManyListbox>	
+			
+			<ui:remove> 
+			
+				<h:outputText value="Country"/>	
+				<h:selectOneMenu value="#{uiTagsExample.country}" 
+							valueChangeListener="#{uiTagsExample.fetchStates}"
+							onchange="submit()" immediate="true">
+					<f:selectItems value="#{uiTagsExample.countries}"/>
+					
+				</h:selectOneMenu>	
+			</ui:remove>
+			
+			
+			<h:outputText value="Country Using VCL Class"/>	
+			<h:selectOneMenu value="#{uiTagsExample.country}" 
+						
+						onchange="submit()" immediate="true">
+				<f:selectItems value="#{uiTagsExample.countries}"/>
+				<f:valueChangeListener type="com.samples.listener.CountryChangeListener"/>	
+			</h:selectOneMenu>	
+			
+					
+			
+			<h:selectBooleanCheckbox value="#{uiTagsExample.read}" id="isRead"/> I have read terms and conditions
+			<h:commandButton value="Submit" onclick="sethiddenfieldVal()" action="uitagsexamplesuccess"/>
+			
+			
+	</h:panelGrid>
+	
+	
+	Example of Data Table: <br/>
+	
+	<!-- columnClassess -->
+	
+	<h:dataTable value="#{productDataTable.productList}" var="product1" border="1"
+	styleClass="order-table"
+	headerClass="order-table-header"
+	rowClasses="order-table-odd-row,order-table-even-row,order-table-even-row1"
+	>
+	
+		<h:column>	
+			<f:facet name="header">Product ID</f:facet>	
+			<h:outputText value="#{product1.productId}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Product Name</f:facet>			
+			<h:outputText value="#{product1.productName}"/>
+		</h:column>
+		<h:column>		
+			<f:facet name="header">Price</f:facet>	
+			<h:outputText value="#{product1.price}"/>
+		</h:column>
+		<h:column>		
+			<f:facet name="header">Qty</f:facet>	
+			<h:outputText value="#{product1.qty}"/>
+		</h:column>
+	
+	</h:dataTable>
+	
+	
+	<b>Add Product</b><br/>
+	
+	<h:panelGrid columns="2">
+	
+		<h:outputText value="Product Id"/>
+		<h:inputText value="#{uiTagsExample.product.productId}"/>
+		
+		<h:outputText value="Product Name"/>
+		<h:inputText value="#{uiTagsExample.product.productName}"/>
+		
+		<h:outputText value="Price"/>
+		<h:inputText value="#{uiTagsExample.product.price}"/>
+		
+		<h:outputText value="Quantity"/>
+		<h:inputText value="#{uiTagsExample.product.qty}"/>
+		
+		<h:panelGroup>
+			<h:commandButton value="Add Product" action="#{uiTagsExample.addProduct}"/>
+		</h:panelGroup>		
+		<h:panelGroup>
+			<h:commandLink value="Add Product" action="#{uiTagsExample.addProduct}"/>
+		</h:panelGroup>	
+	</h:panelGrid>
+	
+	
+	
+	</h:form>
+</h:body>
+
+</html>

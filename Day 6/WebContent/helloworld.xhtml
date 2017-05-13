@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+   <head>
+      <title>JSF Training!</title>
+   </head>
+<!-- JSF Expression Language.... -->
+
+   <body>
+
+	<h:form>
+	    Using JSF Tags:   #{helloWorld.getMessage()} <br/>
+	    
+	    Using Dependent Object Message:   #{helloWorld.getMessageObj().getMessage()} <br/>
+	    
+	    Using Annotation Based Dependent Object Message:   #{helloWorldAnnotation.getMessageObj().getMessage()} <br/>
+	    
+	    
+	    Username: <h:inputText value="#{helloWorld.userName}"/> <br/>
+	    Password: <h:inputSecret value="#{helloWorld.password}"/> <br/>
+	    <br/>
+	    Example of Implicit Navigation: <br/>
+	    <!-- Navigations... -->
+	    <!-- implicit navigation -->
+	    <!-- it will automatically go to success.xhtml page -->
+	    <h:commandButton value="Login" action="success"/>
+	    <br/><br/>
+	    <!-- Implcit Navigation using bean class method.... -->
+	    <!-- it will call the login method of HelloWorld class -->
+	  	Example of Implicit Navigation using action method: <br/>
+	  	<h:commandButton value="Using Bean Class" action="#{helloWorld.login}"/>
+	    <br/><br/>
+	    Example of Conditional Navigation:<br/>
+	    
+	    <h:commandButton value="Submit" action="#{helloWorld.performLogin}"/>
+	    
+	    
+	    <br/><br/>
+	    
+	    Example of Explicit Navigations<br/>
+	    <!-- it needs to go to success.xhtml page -->
+	    <h:commandButton value="Success Page" action="successpage"/>
+	    
+	    
+	     Example of Explicit Navigations different pages for same outcome<br/>
+	    <!-- it needs to go to success.xhtml page -->
+	    <h:commandButton value="Success Page1" action="#{helloWorld.page1}"/>
+	    
+	    <h:commandButton value="Success Page2" action="#{helloWorld.page2}"/>
+	    
+	    
+	    <!-- forward vs redirect -->
+	    
+	    <!-- pass a parameters to managed bean -->
+	    
+	    <h:commandButton value="Add" action="#{helloWorld.performOperation}">
+	    		<f:param name="method" value="add"/>
+	    		<f:param name="emplId" value="1000"/>
+	    </h:commandButton>
+	    
+	    
+	     <h:commandButton value="Delete" action="#{helloWorld.performOperation}">
+	    		<f:param name="method" value="delete"/>
+	    </h:commandButton>
+	    
+	    
+	     <h:commandButton value="Modify" action="#{helloWorld.performOperation}">
+	    		<f:param name="method" value="modify"/>
+	    </h:commandButton>
+	    
+     </h:form>
+   </body>
+   
+   
+</html>
