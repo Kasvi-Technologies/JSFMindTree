@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+      
+<h:head>
+	<title>Using Property Files (Resource Bundles)</title>
+	<link href="./css/styles.css" rel="stylesheet" type="text/css"/> 
+</h:head>
+
+<h:body>
+	success!!!!!
+	<h:form>
+	<h:panelGrid columns="2">
+			<h:outputText value="User Name"/>
+			<h:outputLabel value="#{uiTagsExample.username}" />
+			
+			<h:outputText value="Password"/>
+			<h:outputLabel value="#{uiTagsExample.password}" />
+			
+			<h:outputText value="Hidden Field"/>
+			<h:outputLabel value="#{uiTagsExample.hidden}" />			
+			
+			<h:outputText value="Hobbies"/>
+			<h:outputLabel value="#{uiTagsExample.hobbiesValues}" />
+			
+			<h:outputText value="Gender"/>
+			<h:outputLabel value="#{uiTagsExample.gender}" />
+			
+			<h:outputText value="selected country"/>
+			<h:outputLabel value="#{uiTagsExample.country}" />
+		
+			<h:outputText value="selected state"/>
+			<h:outputLabel value="#{uiTagsExample.satte}" />
+			
+			<h:outputText value="Is read terms and conditions"/>
+			<h:outputLabel value="#{uiTagsExample.read}" />
+			
+			<h:commandButton value="Back" action="uitags"/>
+			
+			
+	</h:panelGrid>
+	</h:form>
+	
+</h:body>
+
+</html>

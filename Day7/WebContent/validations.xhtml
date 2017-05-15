@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+   
+<h:head>
+	<title>Using UI Tags</title>
+	<link href="./css/table-style.css" rel="stylesheet" type="text/css"/> 
+</h:head>
+
+<h:body>
+	
+	<h:messages styleClass="error"/>
+	<h:form id="validationsform" prependId="false">
+	
+		Bid id: <h:inputText id="bidId" value="#{validationBean.bidId}"
+					required="true"
+					requiredMessage="Bid id is mandatory."
+					validatorMessage="Bid Id should be between 6 and 10 characters">
+						<f:validateLength minimum="6" maximum="10"/>
+						<f:validator validatorId="bidIdValidator"/>
+				</h:inputText>
+				 <h:message for="bidId"/><br/>
+				 
+				 <!-- explicit validations using validator tags-->
+		Bid Name: <h:inputText id="bidName" value="#{validationBean.bidName}"
+						required="true"
+						requiredMessage="Bid Name is mandatory."
+						validatorMessage="Bid Name should between 6 and 10 characters and should not allow ."
+						validator="#{validationBean.validateBidName}">
+							<f:validateLength minimum="6" maximum="10"/>
+							
+				  </h:inputText>
+				  <h:message for="bidName"/><br/>
+					
+		Bid price: <h:inputText id="price" value="#{validationBean.price}"
+						validatorMessage="Price should be more than 15"
+						converterMessage="Price should contain only numbers.">
+						<f:validateDoubleRange minimum="15"/>
+					</h:inputText>
+				   <h:message for="price"/><br/>
+				   
+		Bid Duration: <h:inputText id="duration" value="#{validationBean.duration}"
+							validatorMessage="Duration should be more than 5."
+							converterMessage="Duration should contain only numbers.">
+							<f:validateLongRange minimum="5"/>
+					  </h:inputText> 
+					  <h:message for="duration"/><br/>
+		<br/>
+		<!-- Example of Manual Validations..... -->
+		 <h:commandButton value="Submit" action="#{validationBean.validateBid}"/>
+		
+		<!-- Implicit validations -->
+		<h:commandButton value="Submit" action="validationsuccess"/>
+		
+		
+	</h:form>
+</h:body>
+
+</html>
