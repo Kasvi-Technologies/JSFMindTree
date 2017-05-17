@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+   
+<h:head>
+	<title>Registraton Form</title>
+	<link href="./css/table-style.css" rel="stylesheet" type="text/css"/> 
+	
+	
+</h:head>
+
+<h:body>
+<h:form id="registratonform" prependId="false">
+
+	<h:messages id="errorMessages" />
+	<table border="5" align="center">
+	  <tr><th class="title">Registration Form</th></tr>
+	</table>
+	<p/>
+	
+	<h:panelGrid columns="2">
+	
+			<h:outputText value="User Name*"/>
+			
+			<h:panelGroup id="usernamegroup">			
+				<h:inputText value="#{registration.userName}" id="username" 
+						required="true" requiredMessage="User name is mandatory">
+						<f:validateLength minimum="6" maximum="10"/>
+					
+				</h:inputText>	
+				
+				<h:commandLink value="Check User Name is Available or not" 
+						action="#{registration.usernamecheck}" immediate="true"/>
+			</h:panelGroup>
+			
+			
+			<h:outputText value="Password*"/>
+			<h:inputSecret value="#{registration.password}" id="password" 
+					required="true" requiredMessage="password is mandatory">
+					<f:validateLength minimum="6" maximum="10"/>
+			</h:inputSecret>
+			<h:outputText value="Gender"/>
+			<h:selectOneRadio value="#{registration.gender}">
+				<f:selectItems value="#{registration.defaultGenders}"/>
+			</h:selectOneRadio>
+	
+			<h:outputText value="Email*"/>
+			<h:inputText value="#{registration.email}" required="true" requiredMessage="Email is mandatory">
+				<f:validator validatorId="emailValidator"/> 
+			</h:inputText>
+			
+			<h:outputText value="Mobile Number"/>
+			<h:inputText value="#{registration.mobile}" converterMessage="Mobile should be integer">
+				<f:validateLength minimum="6" maximum="12"/>
+			</h:inputText>
+			
+					
+			Country:
+			<h:selectOneMenu id="country" value="#{registration.country}">
+				<f:selectItems value="#{registration.countries}"/>
+				<f:ajax render="stateComp" execute="country"/>
+			</h:selectOneMenu>
+		
+		
+			<br/><br/>
+			State:
+			<h:selectOneMenu id="stateComp" value="#{registration.state}">
+				<f:selectItems value="#{registration.states}"/>	
+				<f:ajax render="cityComp" execute="stateComp"/>			
+			</h:selectOneMenu>
+		
+			<br/><br/>
+			State:
+			<h:selectOneMenu id="cityComp" value="#{registration.city}">
+				<f:selectItems value="#{registration.cities}"/>				
+			</h:selectOneMenu>		
+			
+			<h:selectBooleanCheckbox value="#{registration.read}" id="isRead">
+				<f:ajax render="subnmitbtn" execute="isRead"/>
+			</h:selectBooleanCheckbox>
+			
+			 I have read terms and conditions
+			 <h:panelGroup>
+			<h:commandButton value="Submit" id="subnmitbtn" action="#{registration.performSignUp}" disabled="#{!registration.read}"/>
+			<f:verbatim>&nbsp;&nbsp;</f:verbatim>
+			
+			<h:commandButton value="Cancel" action="login" immediate="true"/>
+			</h:panelGroup>
+	</h:panelGrid>
+	
+	
+	</h:form>
+</h:body>
+
+</html>

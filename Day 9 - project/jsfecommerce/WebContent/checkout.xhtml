@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+   <h:head>
+      <title>JSF Ecommerce Applicaton</title>
+      <link href="./css/table-style.css" rel="stylesheet" type="text/css"/> 
+   </h:head>
+<!-- JSF Expression Language.... -->
+
+   <h:body>
+<h:form prependId="false">
+	<center>Check Out Products</center>	
+			
+	<b>Below is the Summary. </b>
+		
+	<h:dataTable id="itemsGrid" value="#{sessionScope.selectedItems}" var="itemsVar" border="1"
+	styleClass="order-table"
+	headerClass="order-table-header"
+	rowClasses="order-table-odd-row,order-table-even-row"
+	>
+	
+		<h:column>
+			<f:facet name="header">Product Id</f:facet>
+			#{itemsVar.id} 
+		</h:column>
+		<h:column>
+		<f:facet name="header">Company Name</f:facet>
+			#{itemsVar.companyName} 
+		</h:column>
+		<h:column>
+			<f:facet name="header">Model</f:facet>
+			#{itemsVar.model} 
+		</h:column>
+		<h:column>
+			<f:facet name="header">Product Price</f:facet>
+			#{itemsVar.price} 
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Quantity</f:facet>
+			#{itemsVar.qty} 
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Total Amount</f:facet>
+			#{itemsVar.qty * itemsVar.price} 
+		</h:column>
+		
+	</h:dataTable>
+	<b>Total Amount to be Paid: #{checkout.totalprice} INR</b>
+			<br/><br/>
+			
+			<h:selectBooleanCheckbox value="#{checkout.read}" id="isRead">
+				<f:ajax render="subnmitbtn" execute="isRead"/>
+			</h:selectBooleanCheckbox>
+			<f:verbatim>&nbsp;&nbsp;</f:verbatim>
+			 I have read terms and conditions
+			 
+			 <br/>
+			 
+			<h:commandButton value="Submit" id="subnmitbtn" action="#{checkout.performCheckout}" disabled="#{!checkout.read}"/>
+			<f:verbatim>&nbsp;&nbsp;</f:verbatim>
+			
+			<h:commandButton value="Modify Order" action="listing" immediate="true"/>
+			
+			</h:form>	
+   </h:body>
+   
+   
+</html>

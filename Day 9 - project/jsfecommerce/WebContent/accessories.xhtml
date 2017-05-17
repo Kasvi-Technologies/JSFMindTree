@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+   <h:head>
+      <title>JSF Ecommerce Applicaton</title>
+      <link href="./css/table-style.css" rel="stylesheet" type="text/css"/> 
+   </h:head>
+<!-- JSF Expression Language.... -->
+
+   <h:body>
+<h:form id="productsForm" prependId="false">
+	<center>Products</center>	
+	
+	<h:commandLink value="Mobiles" action="mobiles"/> &nbsp;&nbsp;
+	
+	<h:outputText value="Accessories" /> &nbsp;&nbsp;
+	
+	<h:commandLink value="TV" action="tv"/>
+	
+	<h:dataTable id="accessoriesGrid" value="#{products.accessoriesList}" var="accessoriesVar" border="1"
+	styleClass="order-table"
+	headerClass="order-table-header"
+	rowClasses="order-table-odd-row,order-table-even-row"
+	>
+	
+		<h:column>	
+			<f:facet name="header">Acessories ID</f:facet>	
+			<h:outputText value="#{accessoriesVar.id}"/>
+		</h:column>
+		
+		<h:column>	
+			<f:facet name="header">Camplany Name</f:facet>	
+			<h:outputText value="#{accessoriesVar.companyName}"/>
+		</h:column>
+		
+		<h:column>	
+			<f:facet name="header">Model</f:facet>	
+			<h:outputText value="#{accessoriesVar.model}"/>
+		</h:column>
+		
+		<h:column>	
+			<f:facet name="header">Price</f:facet>	
+			<h:outputText value="#{accessoriesVar.price}"/>
+		</h:column>
+		
+		<h:column>	
+			<f:facet name="header">Quantity</f:facet>	
+			<h:inputText value="#{accessoriesVar.qty}" size="5"/>
+		</h:column>
+		<h:column>	
+				
+			<h:commandButton value="Add to cart" action="#{products.addAccessoriesToCart(accessoriesVar)}">
+				<f:param name="id" value="#{accessoriesVar.id}"/>
+				<f:param name="type" value="accessories"/>
+			</h:commandButton>
+		</h:column>
+	</h:dataTable>
+
+		
+		<h:commandButton value="Checkout" action="checkout" id="subnmitbtn" />
+			</h:form>	
+   </h:body>
+   
+   
+</html>

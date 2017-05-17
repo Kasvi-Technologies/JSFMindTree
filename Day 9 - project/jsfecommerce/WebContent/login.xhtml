@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+   <head>
+      <title>JSF Ecommerce Applicaton</title>
+   </head>
+<!-- JSF Expression Language.... -->
+
+   <body>
+
+	<h:form prependId="false" id="loginform">
+	   <center> Login</center> <br/>
+	    <h:message for="errorMsg"/>
+	   
+	    Username: <h:inputText id="unid" value="#{loginBean.userName}" required="true" 
+	    			requiredMessage="Username is mandatory"
+	    			/>
+	    <h:message for="unid"/> <br/>
+	    Password: <h:inputSecret id="pwid" value="#{loginBean.password}" required="true" requiredMessage="password is mandatory"/> 
+	    <h:message for="pwidid"/> 
+	    <br/>
+    
+	     <h:commandButton value="Login" action="#{loginBean.login}"/>
+	     <f:verbatim>&nbsp;&nbsp;</f:verbatim>		
+	     <h:commandButton value="Sign Up" action="signup" immediate="true"/>
+	    
+	    
+     </h:form>
+   </body>
+   
+   
+</html>

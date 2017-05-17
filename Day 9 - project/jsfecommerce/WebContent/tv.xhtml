@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+   <h:head>
+      <title>JSF Ecommerce Applicaton</title>
+      <link href="./css/table-style.css" rel="stylesheet" type="text/css"/> 
+   </h:head>
+<!-- JSF Expression Language.... -->
+
+   <h:body>
+<h:form id="productsForm" prependId="false">
+	<center>Products</center>	
+	
+	<h:commandLink value="Mobiles" action="mobiles"/> &nbsp;&nbsp;
+	
+	<h:commandLink value="Accessories" action="accessories"/> &nbsp;&nbsp;
+	
+	<h:outputText value="TV" />
+	
+	<br/><br/>
+
+	<h:dataTable id="tvGrid" value="#{products.tvList}" var="tvVar" border="1"
+	styleClass="order-table"
+	headerClass="order-table-header"
+	rowClasses="order-table-odd-row,order-table-even-row"
+	>
+	
+		<h:column>	
+			<f:facet name="header">TV ID</f:facet>	
+			<h:outputText value="#{tvVar.id}"/>
+		</h:column>
+		
+		<h:column>	
+			<f:facet name="header">Camplany Name</f:facet>	
+			<h:outputText value="#{tvVar.companyName}"/>
+		</h:column>
+		
+		<h:column>	
+			<f:facet name="header">Model</f:facet>	
+			<h:outputText value="#{tvVar.model}"/>
+		</h:column>
+		
+		<h:column>	
+			<f:facet name="header">Price</f:facet>	
+			<h:outputText value="#{tvVar.price}"/>
+		</h:column>
+		
+		<h:column>	
+			<f:facet name="header">Quantity</f:facet>	
+			<h:inputText value="#{tvVar.qty}" size="5"/>
+		</h:column>
+		<h:column>	
+				
+			<h:commandButton value="Add to cart" action="#{products.addTVsToCart(tvVar)}">
+				<f:param name="id" value="#{tvVar.id}"/>
+				<f:param name="type" value="tv"/>
+			</h:commandButton>
+		</h:column>
+	</h:dataTable>
+
+			
+		<h:commandButton value="Checkout" action="checkout" id="subnmitbtn" />
+			</h:form>	
+   </h:body>
+   
+   
+</html>
