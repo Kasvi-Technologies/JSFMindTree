@@ -1,0 +1,27 @@
+public String usernamecheck(){
+		
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = facesContext.getExternalContext();
+		
+		List<User> usersLst = (ArrayList<User>) externalContext.getSessionMap().get("usersList");
+		
+		String userProvided = externalContext.getRequestParameterMap().get("username");
+		
+		System.out.println("" + getUserName());
+		for (int i=0; usersLst!=null &&i< usersLst.size();i++) {
+			User u = usersLst.get(i);
+			System.out.println("u.get" + u.getUserName());
+			if(u.getUserName().equals(userProvided)){
+				exists = true;
+				facesContext.addMessage("username", new FacesMessage("username already exists!!!!!!!!!!!!"));
+				break;
+			}
+		}
+		
+		//exists = false;
+		if (facesContext.getMessageList().size() ==0){
+			facesContext.addMessage("username", new FacesMessage("Congrats !!!! username is available."));
+			
+		}
+		return null;
+	}
